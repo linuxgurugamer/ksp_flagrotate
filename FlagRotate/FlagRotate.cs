@@ -2,7 +2,7 @@
  *                    FlagRotate for Kerbal Space Program                     *
  *                                                                            *
  * Version 1.0                                                                *
- * Created: 5/11/2014 by xEvilReeperx                                         *
+ * Created: 4/11/2014 by xEvilReeperx                                         *
  * ************************************************************************** *
  
 This is free and unencumbered software released into the public domain.
