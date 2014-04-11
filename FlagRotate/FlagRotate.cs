@@ -132,13 +132,14 @@ namespace FlagRotate
         // Constants
         private const float AngleDelta = 5f;        // Angle adjustments are in this many degrees
 
+
         // Persistent values
         [KSPField(isPersistant = true)]
-        private Quaternion rotation = Quaternion.identity; // ground pivot rotation
+        private Quaternion rotation = Quaternion.identity;
+
 
         [KSPField(isPersistant = true)]
-        private bool ready = false;                 // whether we should use the stored rotation or use its current value
-
+        private bool ready = false;
 
     //---------------------------------------------------------------------
     //  Implementation
@@ -161,23 +162,39 @@ namespace FlagRotate
             FlagSite flag = part.Modules.OfType<FlagSite>().SingleOrDefault();
             if (flag != null)
                 flag.groundPivot.rotation = Quaternion.AngleAxis(angle, flag.groundPivot.transform.up) * flag.groundPivot.rotation;
+
             rotation = flag.groundPivot.rotation;
+            ready = true;
         }
 
+
+        /// <summary>
+        /// Seems to be the best place to apply the stored rotation if
+        /// the flag is just being loaded. Doing it in Start resulted in
+        /// bad rotations once; this waits till physics are good before
+        /// attempting anything
+        /// </summary>
+        /// <param name="vessel"></param>
+        public void VesselOffRails(Vessel vessel)
+        {
+            if (vessel.rootPart == part)
+                if (ready)
+                {
+                    part.Modules.OfType<FlagSite>().Single().groundPivot.rotation = rotation;
+                }
+                else
+                {
+                    rotation = part.Modules.OfType<FlagSite>().Single().groundPivot.rotation;
+                    ready = true;
+                }
+        }
 
         public void Start()
         {
+            GameEvents.onVesselGoOffRails.Add(VesselOffRails);
             var flag = part.Modules.OfType<FlagSite>().Single();
-
-            if (ready)
-            {
-                flag.groundPivot.rotation = rotation;
-            }
-            else
-            {
-                ready = true;
-                rotation = flag.groundPivot.rotation;
-            }
         }
+
+        public void OnDestroy() { GameEvents.onVesselGoOffRails.Remove(VesselOffRails); }
     }
 }
