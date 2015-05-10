@@ -6,6 +6,7 @@ using UnityEngine;
 namespace FlagRotate
 {
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
+// ReSharper disable once UnusedMember.Global
     class FlagPrefabEditor : MonoBehaviour
     {
         private void Awake()
@@ -38,8 +39,6 @@ namespace FlagRotate
             }
             catch (Exception e)
             {
-                // still throws an exception, but it's in a good enough
-                // state to work
                 Debug.LogError("FlagRotate: Unexpected exception while modifying prefab!");
                 Debug.LogError(e);
             }
@@ -47,4 +46,29 @@ namespace FlagRotate
             Destroy(this);
         }
     }
+
+#if DEBUG
+    [KSPAddon(KSPAddon.Startup.Flight, false)]
+// ReSharper disable once UnusedMember.Global
+    public class FlagPrefabRemoval : MonoBehaviour
+    {
+// ReSharper disable once UnusedMember.Local
+        private void OnPluginReloadRequested()
+        {
+            print("FlagPrefabRemoval: Plugin reload requested");
+            var flag = PartLoader.LoadedPartsList.Find(ap => string.Equals(ap.name, "flag"));
+            if (flag == null) return;
+
+            flag.partPrefab.RemoveModule(flag.partPrefab.GetComponents<PartModule>().First(pm => pm is ModuleFlagRotator));
+
+            FlightGlobals.Vessels
+                .Where(v => v.loaded)
+                .SelectMany(v => v.Parts)
+                .Where(p => p.GetComponents<PartModule>().Any(pm => pm is ModuleFlagRotator))
+                .ToList()
+                .ForEach(p => Destroy(p.GetComponent<ModuleFlagRotator>()));
+        }
+    }
+    
+#endif
 }

@@ -1,12 +1,15 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FlagRotate
 {
+// ReSharper disable once ClassNeverInstantiated.Global
     public class ModuleFlagRotator : PartModule
     {
         private FlagSite _flagModule;
 
+// ReSharper disable ConvertToConstant.Global
+// ReSharper disable FieldCanBeMadeReadOnly.Global
+// ReSharper disable MemberCanBePrivate.Global
         [KSPField] public float DeltaAngle = 5f;
         [KSPField] public string ClockwiseName = "Clockwise";
         [KSPField] public string CounterclockwiseName = "Counterclockwise";
@@ -43,7 +46,7 @@ namespace FlagRotate
         private void Rotate(float angle)
         {
             // test for existence of the ground joint. If it doesn't exist, there's no telling what
-            // will happen if we try to rotate so 
+            // will happen if we try to rotate
 
             if (gameObject.GetComponent<ConfigurableJoint>() == null)
             {
@@ -66,7 +69,8 @@ namespace FlagRotate
 
             var deltaRotation = Quaternion.AngleAxis(angle, transform.up);
                
-            // note: it's important to fix position else the flag won't rotate around the pole as the player would expect
+            // note: rotate around the axis defined by the ground pivot. Otherwise the flag will try to rotate around
+            // its approximate center which doesn't make much sense to the player
             vessel.SetPosition(deltaRotation * (vessel.vesselTransform.position - _flagModule.groundPivot.position) +
                                _flagModule.groundPivot.position);
             vessel.SetRotation(deltaRotation * vessel.vesselTransform.rotation);
@@ -83,8 +87,11 @@ namespace FlagRotate
                                 "Manufacturer's tip: place pointy end into the ground before adjusting flag orientation.",
                                 string.Format("User error: {0} lacks the intelligence for this task", FlightGlobals.ActiveVessel.vesselName),
                                 "User error: replace user and try again",
-                                "This flag appears to be defective. Or incorrectly planted. Probably the second one." }
-                    [UnityEngine.Random.Range(0, 5)],
+                                "This flag appears to be defective. Or incorrectly planted. Probably the second one.",
+                                "Rotating a fallen flag doesn't seem like it will work."
+                                
+                    }
+                    [UnityEngine.Random.Range(0, 6)],
                     5f,
                     ScreenMessageStyle.UPPER_CENTER));
         }
