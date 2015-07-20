@@ -85,13 +85,14 @@ namespace FlagRotate
                 new ScreenMessage(
                     new[] { "That seems pointless. The insolent flag remains motionless.",
                                 "Manufacturer's tip: place pointy end into the ground before adjusting flag orientation.",
-                                string.Format("User error: {0} lacks the intelligence for this task", FlightGlobals.ActiveVessel.vesselName),
                                 "User error: replace user and try again",
                                 "This flag appears to be defective. Or incorrectly planted. Probably the second one.",
-                                "Rotating a fallen flag doesn't seem like it will work."
+                                "Rotating a fallen flag doesn't seem like it will work.",
+                                "That might work if the flag were upright...",
+                                "The flag is tired right now and doesn't want to rotate. Try again when it is standing up."
                                 
                     }
-                    [UnityEngine.Random.Range(0, 6)],
+                    [UnityEngine.Random.Range(0, 7)],
                     5f,
                     ScreenMessageStyle.UPPER_CENTER));
         }
