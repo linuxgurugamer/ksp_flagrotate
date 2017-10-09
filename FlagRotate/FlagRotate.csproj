@@ -78,9 +78,10 @@ start /D D:\Users\jbb\github\ksp_flagrotate\FlagRotate /WAIT buildRelease.bat
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>set textTemplatingPath="%25CommonProgramFiles(x86)%25\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\texttransform.exe"
+    <PreBuildEvent>
+set textTemplatingPath="%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Community\Common7\IDE \texttransform.exe"
 
-if %25textTemplatingPath%25=="\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\texttransform.exe" set textTemplatingPath="%25CommonProgramFiles%25\Microsoft Shared\TextTemplating\$(VisualStudioVersion)\texttransform.exe"
+
 
 %25textTemplatingPath%25 "$(ProjectDir)AssemblyVersion.tt"</PreBuildEvent>
   </PropertyGroup>

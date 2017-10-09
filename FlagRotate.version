@@ -1,25 +1,25 @@
 {
   "NAME": "FlagRotate",
-  "URL": "http://ksp-avc.cybutek.net/version.php?id=441",
+  "URL": "https://raw.githubusercontent.com/linuxgurugamer/ksp_flagrotate/master/FlagRotate.version",
   "VERSION": {
     "MAJOR": 1,
     "MINOR": 1,
-    "PATCH": 3,
+    "PATCH": 5,
     "BUILD": 0
   },
   "KSP_VERSION": {
     "MAJOR": 1,
-    "MINOR": 2,
-    "PATCH": 2
+    "MINOR": 3,
+    "PATCH": 1
   },
   "KSP_VERSION_MIN": {
     "MAJOR": 1,
-    "MINOR": 2,
-    "PATCH": 2
+    "MINOR": 3,
+    "PATCH": 1
   },
   "KSP_VERSION_MAX": {
     "MAJOR": 1,
-    "MINOR": 2,
-    "PATCH": 99
+    "MINOR": 3,
+    "PATCH": 1
   }
 }
