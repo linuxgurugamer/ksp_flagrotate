@@ -1,6 +1,11 @@
 {
   "NAME": "FlagRotate",
   "URL": "https://raw.githubusercontent.com/linuxgurugamer/ksp_flagrotate/master/FlagRotate.version",
+    "DOWNLOAD": "http://spacedock.info/mod/613/ksp_flagrotate",
+    "GITHUB": {
+    "USERNAME": "linuxgurugamer",
+    "REPOSITORY": "ksp_flagrotate"
+  },
   "VERSION": {
     "MAJOR": 1,
     "MINOR": 1,
