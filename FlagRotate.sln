@@ -1,17 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagRotate", "FlagRotate.csproj", "{5B7BD7F4-DC6E-42B0-B4B0-753DAC65A602}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagRotate", "FlagRotate\FlagRotate.csproj", "{5B7BD7F4-DC6E-42B0-B4B0-753DAC65A602}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3684658C-9F39-46C5-9DE2-1BC2DCBEE254}"
 	ProjectSection(SolutionItems) = preProject
 		buildRelease.bat = buildRelease.bat
 		deploy.bat = deploy.bat
-		..\FlagRotate.version = ..\FlagRotate.version
-		..\LICENSE.txt = ..\LICENSE.txt
-		..\README.md = ..\README.md
+		FlagRotate.version = FlagRotate.version
+		jenkins.txt = jenkins.txt
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -27,5 +28,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {145B8021-5BCF-437C-BD14-ACF384CA7C69}
 	EndGlobalSection
 EndGlobal
