@@ -1,8 +1,8 @@
 {
   "NAME": "FlagRotate",
   "URL": "http://ksp.spacetux.net/avc/FlagRotate",
-  "DOWNLOAD": "http://spacedock.info/mod/613/ksp_flagrotate",
-  "GITHUB": {
+    "DOWNLOAD": "http://spacedock.info/mod/613/ksp_flagrotate",
+    "GITHUB": {
     "USERNAME": "linuxgurugamer",
     "REPOSITORY": "ksp_flagrotate"
   },
@@ -21,5 +21,10 @@
     "MAJOR": 1,
     "MINOR": 5,
     "PATCH": 1
+  },
+  "KSP_VERSION_MAX": {
+    "MAJOR": 1,
+    "MINOR": 5,
+    "PATCH": 99
   }
 }
