@@ -14,3 +14,7 @@ Rotate the flag on EVA
 
 1.1.6.1
 		Version bump for 1.5 rebuild
+
+1.1.7
+	Version bump for 1.7.2
+	Updated AssemblyVersion.tt
