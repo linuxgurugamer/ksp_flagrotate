@@ -18,3 +18,6 @@ Rotate the flag on EVA
 1.1.7
 	Version bump for 1.7.2
 	Updated AssemblyVersion.tt
+	
+1.1.7.1
+	Fixed download url
